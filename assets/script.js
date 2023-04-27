@@ -19,35 +19,35 @@ const slides = [
 // const arrow 
 const arrowLeft = document.getElementsByClassName('arrow_left')[0];
 const arrowRight = document.querySelector(".arrow_right");
-
+/* const Text et dots */
 const textPhoto = document.querySelector(".text_photo");
 const dots = document.querySelectorAll('.dot');
 let indexSlider = 0;
-/* const arrowRight= document.querySelector(#arrowRight) */
 
-
-/* fonctionnement des flèches */
+/* fonctionnement des flèches AVEC LES DOTS */
 arrowLeft.addEventListener("click", () => {
 	console.log( "fleche gauche")
+	console.log( indexSlider)
 	updateIndex(-1)
-	// dots.classList.add("dot_selected");
-	display(indexSlider)
+	display(indexSlider);
+	checkSelectedDot(indexSlider);
 });
 
 arrowRight.addEventListener("click", () => {
 	console.log( "fleche right")
+	console.log( indexSlider)
 	updateIndex(1)
-	// dots[0].classList.add("dot_selected");
-	display(indexSlider)
-
+	display(indexSlider);
+	checkSelectedDot(indexSlider);
  	});
 
 	dots.forEach((dot, index) => {
 		dot.addEventListener('click', () => {
+			console.log( "bullet point")
+			console.log( indexSlider)
 			indexSlider = index;
 			display(indexSlider);
-
-				  
+			checkSelectedDot(indexSlider);		  
 		});	 
 });
 
@@ -66,7 +66,6 @@ slides.forEach(function (dotIndex, index) {
 */
 
 function updateIndex (sens) {
-	
 	indexSlider = indexSlider + sens
 	const max = slides.length;
 	if (indexSlider < 0) {
@@ -83,35 +82,39 @@ function display (currentIndexSlider) {
 
 	slideHtml.src=`./assets/images/slideshow/${slides[currentIndexSlider].image}` 
 	textPhoto.innerHTML = slides[currentIndexSlider].tagLine;
-
 }
 
-// function checkSelectedDot(indexSlider) {
-// 	dots.forEach((dot, index) => {
-	
-// 	});
-// }
-
+/* Pour enlever la classe dot_selected aux Dots */
+function checkSelectedDot(indexSlider) {
+	dots.forEach((dot, index) => {
+		if (index === indexSlider) {
+			dot.classList.add("dot_selected");
+		} else {
+			dot.classList.remove("dot_selected");
+		}
+	});
+}
+display(indexSlider);
 
 
 
 // dots[0].classList.add("dot_selected");	
 /* re test dots */
-	dots.forEach((dot, index) => {
-		dot.addEventListener('click', () => {
-			//pour enlever la selection a TOUT les dots
-			dots.forEach((dot) => {
-				dot.classList.remove('dot_selected');
-			  });
+	// dots.forEach((dot, index) => {
+	// 	dot.addEventListener('click', () => {
+	// 		//pour enlever la selection a TOUT les dots
+	// 		dots.forEach((dot) => {
+	// 			dot.classList.remove('dot_selected');
+	// 		  });
 
-		  dot.classList.add('dot_selected');
+	// 	  dot.classList.add('dot_selected');
 	  
-		  // pour que indexSlider soit avec le dot selected
-		  indexSlider = index;
+	// 	  // pour que indexSlider soit avec le dot selected
+	// 	  indexSlider = index;
 
-		  display(indexSlider);
-		});
-	  });
+	// 	  display(indexSlider);
+	// 	});
+	//   });
 
-	dot.classList.remove('dot_selected');
+	
 
