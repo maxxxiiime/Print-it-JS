@@ -51,20 +51,7 @@ arrowRight.addEventListener("click", () => {
 		});	 
 });
 
-/* test dots */
-/*
-slides.forEach(function (dotIndex, index) {
-	console.log(index);
-		dots.addEventListener("click", () => {
-			console.log("point")
-			index=dotIndex
-			dots.classList.add("dot_selected");
-			updateIndex(1)
-	display(indexSlider)
-		});
-});
-*/
-
+/* pour creer une boucle */
 function updateIndex (sens) {
 	indexSlider = indexSlider + sens
 	const max = slides.length;
@@ -75,7 +62,6 @@ function updateIndex (sens) {
 		indexSlider= 0
 	}	
 }
-
 /* display images du carrousel */
 function display (currentIndexSlider) {
 	const slideHtml = document.getElementsByClassName('banner-img')[0]
@@ -83,7 +69,6 @@ function display (currentIndexSlider) {
 	slideHtml.src=`./assets/images/slideshow/${slides[currentIndexSlider].image}` 
 	textPhoto.innerHTML = slides[currentIndexSlider].tagLine;
 }
-
 /* Pour enlever la classe dot_selected aux Dots */
 function checkSelectedDot(indexSlider) {
 	dots.forEach((dot, index) => {
@@ -95,26 +80,3 @@ function checkSelectedDot(indexSlider) {
 	});
 }
 display(indexSlider);
-
-
-
-// dots[0].classList.add("dot_selected");	
-/* re test dots */
-	// dots.forEach((dot, index) => {
-	// 	dot.addEventListener('click', () => {
-	// 		//pour enlever la selection a TOUT les dots
-	// 		dots.forEach((dot) => {
-	// 			dot.classList.remove('dot_selected');
-	// 		  });
-
-	// 	  dot.classList.add('dot_selected');
-	  
-	// 	  // pour que indexSlider soit avec le dot selected
-	// 	  indexSlider = index;
-
-	// 	  display(indexSlider);
-	// 	});
-	//   });
-
-	
-
